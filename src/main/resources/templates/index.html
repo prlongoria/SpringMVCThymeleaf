@@ -9,23 +9,38 @@
     <h1>
         Página de Inicio
     </h1>
-<p th:text="Saludos"></p>
+    <p th:text="Saludos"></p>
 
-<p th:text="${message}"></p>
+    <p th:text="${message}"></p>
 
-<p th:text="${greeting}"></p>
+    <p th:text="${greeting}"></p>
 
-<br>
+    <br>
 
-Name: <span th:text="${person.name}">Show Name</span>
-<br>
-Surname: <span th:text="${person.surname}">Show Surname</span>
-<br>
-Email: <span th:text="${person.email}">Show email</span>
-<br>
-Phone: <span th:text="${person.phone}">Show phone</span>
+    <div th:if="${persons != null and !persons.empty}">
 
+        <table border="1px">
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
 
+            <tr th:each="person : ${persons}">
+                <td th:text="${person.name}">Show Name</td>
 
+                <td th:text="${person.surname}">Show Surname</td>
+
+                <td th:text="${person.email}">Show email</td>
+
+                <td th:text="${person.phone}">Show phone</td>
+            </tr>
+
+        </table>
+    </div>
+    <div th:if="${persons != null and !persons.empty}">
+        La lista de personas está vacía
+    </div>
 </body>
 </html>
